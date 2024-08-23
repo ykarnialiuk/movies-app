@@ -7,7 +7,7 @@ import Spinner from "./Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { addFavorite, removeFavorite, toggleWatched, updateNotes, updateRating } from "../slices/favoritesSlice";
-import { getFullImageUrl } from "../utils/imageUtils";
+import { getFullImageUrl } from "../utils/imageUtils"
 import { useState } from "react";
 
 const MovieDetails: React.FC = () => {
@@ -18,6 +18,8 @@ const MovieDetails: React.FC = () => {
     const [rating, setRating] = useState(0);
 
     const { data: movie, isLoading } = useGetMovieByIdQuery(id ?? '0');
+
+    console.log(movie)
 
     const dispatch = useDispatch();
 

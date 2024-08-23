@@ -17,7 +17,7 @@ const NavBar: React.FC = () => (
                         Home
                     </Nav.Link>
                 </Nav>
-                <div className="d-none d-lg-block mx-auto" style={{ width: '100%', paddingRight: '15%' }}>
+                <div className="d-none d-lg-block mx-auto" style={{ width: '100%', paddingRight: '10%' }}>
                     <SearchBar />
                 </div>
             </BoostrapNavbar.Collapse>

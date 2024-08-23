@@ -1,10 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Movie } from "../models/Movie";
-import { getFullImageUrl } from "../utils/ImageUtils";
 import { Genre } from "../models/Genre";
-import { MovieFilterModel } from "../models/MovieFilterModel";
-import { getMovieQuery } from "../utils/movieFilterUtils";
-import { Person } from "../models/Person";
+import { MovieFilter } from "../models/MovieFilter";
+import createMovieSearchQuery from "../utils/queryUtils";
+import { MovieDetail } from "../models/MovieDetail";
+import { Movie } from "../models/Movie";
 
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -13,24 +12,17 @@ export const moviesApi = createApi({
     reducerPath: "moviesApi",
     baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
     endpoints: (builder) => ({
-        getMovieById: builder.query<Movie, number>({
+        getMovieById: builder.query<MovieDetail, string>({
             query: (id) => ({
-                url: `movie/${id}`,
+                url: `movie/${id}?append_to_response=credits`,
                 params: {
                     api_key: API_KEY,
                 },
             }),
         }),
-        getMoviesByFilter: builder.query<Movie[], MovieFilterModel>({
-            query: async (filter) => {
-                var result = await getMovieQuery(filter);
-            },
-            transformResponse: (response: { results: Movie[] }) => {
-                return response.results.map(movie => ({
-                    ...movie,
-                    poster_path: getFullImageUrl(movie.poster_path)
-                }))
-            }
+        getMoviesByFilter: builder.query<Movie[], MovieFilter>({
+            query: ({title, releaseYear}) => `search/movie?api_key=${API_KEY}&${createMovieSearchQuery(title, releaseYear)}`,
+            transformResponse: (response: { results: Movie[] }) => response.results,
         }),
         getGenres: builder.query<Genre[], void>({
             query: () => ({
@@ -39,6 +31,7 @@ export const moviesApi = createApi({
                     api_key: API_KEY
                 },
             }),
+            transformResponse: (response: { genres: Genre[]}) => response.genres,
         }),
     })
 })
