@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+Movie Search Application
+Description
+The purpose of this application is to provide users with a platform to manage their personal movie collection. Users can add, view, update and delete movies, as well as track their watched status, personal notes and ratings.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was bootstrapped with Vite React App.
 
-Currently, two official plugins are available:
+Functionality
+Implementation of a search function to quickly find movies by title, release year.
+Ability to add found movies to a collection.
+Displaying a list of all movies in the collection with their details, including title, genre, and watched status.
+View details about a particular movie in the collection, including its description, poster image, and user ratings.
+Ability to mark a movie in the collection as "watched" or "unwatched" to track viewing status.
+﻿﻿Ability to rate a movie in the collection and update personal notes.
+﻿﻿Ability to remove unwanted movies from the collection.
+Technical requirements
+API Integration: The project integrates with an API to retrieve movie data, specifically leveraging the The Movie Database API, allowing access to up-to-date information about films.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Routing Management: React Router is utilized to manage different routes and components within the application, facilitating smooth navigation through the interface.
 
-## Expanding the ESLint configuration
+State Management: The application's state is managed using Redux, enabling efficient handling of data and its changes.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Asynchronous Operations: For executing asynchronous operations such as API calls, Redux Toolkit Query (RTK Query) is employed, simplifying data handling and retrieval.
 
-- Configure the top-level `parserOptions` property like this:
+User Interface Design: The application features a stylish and responsive user interface built with React-Bootstrap, enhancing the overall user experience.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Error Handling: Comprehensive error handling is implemented for invalid searches and API failures, providing users with clear feedback on potential issues.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Favorite Movies Functionality: Users can save and load their list of favorite movies using Local Storage, allowing for a more personalized interaction with the application
+Available Scripts
+In the project directory, you can run:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+npm run dev
+Runs the app in the development mode.
+Open http://localhost:5173 to view it in the browser.
