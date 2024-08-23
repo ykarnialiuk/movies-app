@@ -1,0 +1,50 @@
+.movie-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+    overflow: hidden;
+}
+
+.movie-card img {
+    object-fit: cover;
+    height: 500px;
+    width: 100%;
+}
+
+.movie-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.movie-release,
+.movie-genres,
+.movie-rating {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.movie-release .icon,
+.movie-rating .icon {
+    color: #FF6F61;
+}
+
+.movie-rating .star {
+    color: #FFD700;
+}
+
+.more-info-button {
+    border-radius: 20px;
+}
+
+.star {
+    cursor: pointer;
+    color: grey; /* Не выбранные звезды */
+}
+
+.star.rated {
+    color: gold; /* Выбранные звезды */
+}
